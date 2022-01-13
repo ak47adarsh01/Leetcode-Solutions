@@ -1,30 +1,25 @@
-class Solution {
+class Solution{
 public:
-	vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-		vector<int>cur_path;
-		len = candidates.size();
-		dfs ( candidates, target, cur_path, 0 );
-		return ans;
-	}
-
-private:
-	vector<vector<int>> ans;
-	int len;
-	
-	void dfs ( vector<int> &candidates, int target, vector<int> &cur_path, int start )
-	{
-		if ( target < 0 ) return;
-		if ( target == 0 )
-		{
-			ans.push_back(cur_path);
-			return;
-		}
-		
-		for ( ; start < len; ++start )
-		{
-			cur_path.push_back( candidates[start] );
-			dfs ( candidates, target - candidates[start], cur_path, start );
-			cur_path.pop_back();
-		}
-	}
+        void findCombination( int ind, int target, vector<int> &arr , vector<vector<int>> &ans , vector<int>&ds){
+            if(ind == arr.size()){
+                if(target == 0){
+                    ans.push_back(ds);
+                }
+                return;
+            }
+            // pick up the element
+            if(arr[ind] <= target){
+                ds.push_back(arr[ind]);
+                findCombination(ind, target-arr[ind],arr,ans, ds);
+                ds.pop_back();
+            }
+            findCombination(ind+1, target, arr, ans, ds);
+        }
+    public:
+       vector<vector<int>> combinationSum(vector<int>& candidates , int target){
+           vector<vector<int>> ans;
+           vector<int> ds;
+           findCombination(0, target , candidates , ans , ds);
+           return ans;
+       }
 };
