@@ -6,7 +6,7 @@ public:
                vector<int> &upperDiagonal, vector<int> &lowerDiagonal, int n) {
         if(col == n) {
             ans.push_back(board); 
-            
+            return; 
         }
     
         
