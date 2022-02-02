@@ -22,8 +22,7 @@ private:
     
 public:
     vector<vector<int>> permute(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-      vector<vector<int>> ans;
+    vector<vector<int>> ans;
         int index  = 0;
         solve(nums , ans , index);
         return ans;
