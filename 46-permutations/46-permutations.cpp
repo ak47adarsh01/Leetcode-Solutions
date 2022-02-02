@@ -8,7 +8,7 @@ private:
             return;
         }
         
-        for(int j= index; j<nums.size(); j++){
+        for(int j = index; j<nums.size(); j++){
             swap(nums[index] ,nums[j]);
             solve(nums , ans , index+1);
             //backtrack
@@ -22,6 +22,7 @@ private:
     
 public:
     vector<vector<int>> permute(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
       vector<vector<int>> ans;
         int index  = 0;
         solve(nums , ans , index);
