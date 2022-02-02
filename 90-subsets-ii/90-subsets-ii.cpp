@@ -1,9 +1,12 @@
 class Solution {
+    
+     // Solution using Backtarcking 
+    
 private:
-     void solve(vector<int>&nums,vector<int>&ans,vector<vector<int>>&output,int idx){
+     void solve(vector<int>&nums,vector<int>&ans,vector<vector<int>>&output,int index){
         output.push_back(ans);
-        for(int i=idx;i<nums.size();i++){
-            if(i!=idx && nums[i]==nums[i-1]){
+        for(int i=index;i<nums.size();i++){
+            if(i!=index && nums[i]==nums[i-1]){
                 continue;
             }
             ans.push_back(nums[i]);
