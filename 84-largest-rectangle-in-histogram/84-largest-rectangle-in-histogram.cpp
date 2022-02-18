@@ -1,4 +1,6 @@
 class Solution {
+    
+    // T.C = O(N)
 private:
     vector<int> nextSmallerElement(vector<int> arr, int n){
     stack<int> s;
@@ -19,7 +21,7 @@ private:
     }
     
     vector<int> previousSmallerElement(vector<int> arr, int n){
-      stack<int> s;
+    stack<int> s;
     s.push(-1);
     vector<int> ans(n);
     
