@@ -1,16 +1,32 @@
 class Solution {
-public:
-    bool isValid(string s) {
-        stack<char> st;  //taking stack for keep tracking the order of the brackets..
-        for(auto i:s)  //iterate over each and every elements
-        {
-            if(i=='(' or i=='{' or i=='[') st.push(i);  //if current element of the string will be opening bracket then we will just simply push it into the stack
-            else  //if control comes to else part, it means that current element is a closing bracket, so check two conditions  current element matches with top of the stack and the stack must not be empty...
-            {
-                if(st.empty() or (st.top()=='(' and i!=')') or (st.top()=='{' and i!='}') or (st.top()=='[' and i!=']')) return false;
-                st.pop();  //if control reaches to that line, it means we have got the right pair of brackets, so just pop it.
-            }
-        }
-        return st.empty();  //at last, it may possible that we left something into the stack unpair so return checking stack is empty or not..
+  public:
+         bool isValid(string s) {
+    stack<char> stack;
+
+    if(s.length() == 0){
+        return true;
     }
-};
+    if(s.length() == 1){
+        return false;
+    }
+    
+    for(int i =0 ; i < s.length(); i++){
+        char c = s[i];
+        cout << c;
+        if(c == '}'|| c == ')' || c == ']'){
+            if(stack.size() == 0 ) return false;
+            if(c == '}' && stack.top() != '{') return false;
+            if(c == ')' && stack.top() != '(') return false;
+            if(c == ']' && stack.top() != '[') return false;
+            stack.pop();
+            
+         } else {
+            stack.push(c);
+        }
+    }
+    cout << "reached end";
+    if(stack.size() == 0) return true;
+    return false;
+}
+};    
+    
