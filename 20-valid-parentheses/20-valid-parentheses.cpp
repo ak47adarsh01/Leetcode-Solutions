@@ -12,7 +12,7 @@ class Solution {
     
     for(int i =0 ; i < s.length(); i++){
         char c = s[i];
-    
+        cout << c;
         if(c == '}'|| c == ')' || c == ']'){
             if(stack.size() == 0 ) return false;
             if(c == '}' && stack.top() != '{') return false;
