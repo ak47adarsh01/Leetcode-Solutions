@@ -8,7 +8,7 @@ public:
         int ans = -1;
         
         while( start <= end){
-            int mid =  ( start + end) /2;
+            int mid =  start + ( end - start) /2;
             if(arr[mid] == mid){
             
                 ans  = mid;
