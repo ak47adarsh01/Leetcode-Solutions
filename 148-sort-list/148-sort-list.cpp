@@ -50,6 +50,6 @@ public:
 	return top;
 }
 ListNode* sortList(ListNode* head) {
-	return sortListQuickly(head, 0);
+	return sortListQuickly(head, nullptr);
 }
 };
