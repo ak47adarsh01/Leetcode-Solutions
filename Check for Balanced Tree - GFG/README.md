@@ -1,5 +1,5 @@
 # Check for Balanced Tree
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a binary tree, find if it is height balanced or not.&nbsp;<br>
 A tree is height balanced if difference between heights of left and right subtrees is <strong>not more than one</strong> for all nodes of tree.&nbsp;</span></p>
