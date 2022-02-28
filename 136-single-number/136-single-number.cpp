@@ -1,11 +1,12 @@
 class Solution {
 public:
-    int singleNumber(vector<int>& nums) {
-    int a = 0;
-    for (int i : nums) {
-      a ^= i;
-    }
-    return a;
+    
+     int singleNumber(vector<int>& nums) {        
         
+        // Using XOR property for Unique number
+        int resultXOR = 0;                
+        for(int a: nums)
+            resultXOR ^= a;        
+        return resultXOR;            
     }
 };
