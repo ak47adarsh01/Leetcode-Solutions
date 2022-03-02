@@ -1,17 +1,29 @@
 class Solution {
 public:
-    int missingElement(vector<int>& nums, int k) {
-        int left = 0, right = nums.size()-1;
-        int Kstart = nums[0]-1;
-        while(left>=0 && right<nums.size() && left <= right){
-            int mid = left + (right-left)/2;
-            if(nums[mid]-mid-1 < k+Kstart){
-                left = mid+1;
-            }
-            else {
-                right = mid-1;
-            }
+    int missingElement(const vector<int>& A, int k) {
+        // inline function to get missing numbers count
+        auto MissingNumbers = [&A](int pivot) -> int {
+            return A[pivot] - A.front() - pivot;
+        };
+        
+        int left = 0, right = A.size() - 1;
+        int value = MissingNumbers(right);
+        
+        // kth missing element is outside the bounds of the array
+        if (value < k) return A.back() + k - value;
+        
+        // simply binary search
+        while (left < right) {
+            
+            // get the midpoint
+            int pivot = left + (right - left) / 2;
+            value = MissingNumbers(pivot);
+            
+            // compare and update pointers
+            value < k ? left = pivot + 1 : right = pivot;
         }
-        return left+k+Kstart;
+
+        // return the kth smallest
+        return A[left - 1] + k - MissingNumbers(left - 1);
     }
 };
