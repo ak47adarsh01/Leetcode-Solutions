@@ -2,7 +2,7 @@ class Solution {
 public:
     TreeNode* ans;
     void help(TreeNode* root, int val){
-        if(!root)
+        if(root == NULL)
             return;
         if(root->val == val){
             ans = root;
