@@ -31,6 +31,8 @@ public:
                 return temp;
             }
             
+            
+            
             if ( root->left == NULL && root->right != NULL) {
                 TreeNode *temp = root->right;
                 delete(root);
