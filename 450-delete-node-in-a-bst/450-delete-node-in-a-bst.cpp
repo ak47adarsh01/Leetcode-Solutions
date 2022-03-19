@@ -24,7 +24,7 @@ public:
                 delete(root);
                 return NULL;
             }
-            /* 1 child case */
+            /* 1 child case left */
             if ( root->left != NULL && root->right ==NULL) {
                 TreeNode *temp = root->left;
                 delete(root);
@@ -32,14 +32,14 @@ public:
             }
             
             
-            
+              /* 1 child case right */
             if ( root->left == NULL && root->right != NULL) {
                 TreeNode *temp = root->right;
                 delete(root);
                 return temp;
             }
             /* 2 child case */
-            if (root->left && root->right) {
+            if (root->left != NULL && root->right != NULL) {
                 TreeNode *tmp = root->right;
                 while (tmp->left) {
                     tmp = tmp->left;
