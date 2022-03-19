@@ -34,7 +34,7 @@ public:
     }
     
     int kthSmallest(TreeNode* root, int k) {
-    int i = 0;    
+    int i = 0;   // Where i is the counter 
     int ans = solve(root , i, k);
     return ans; 
     }
