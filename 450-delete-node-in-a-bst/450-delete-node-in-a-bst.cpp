@@ -20,15 +20,21 @@ public:
             root->right = deleteNode(root->right, val);
         } else {
             /* Leaf node case */
-            if (!root->left && !root->right) {
+            if (root->left == NULL && root->right == NULL) {
                 delete(root);
                 return NULL;
             }
             /* 1 child case */
-            if (!root->left || !root->right) {
-                TreeNode *ret = root->left ? root->left : root->right;
+            if ( root->left != NULL && root->right ==NULL) {
+                TreeNode *temp = root->left;
                 delete(root);
-                return ret;
+                return temp;
+            }
+            
+            if ( root->left == NULL && root->right != NULL) {
+                TreeNode *temp = root->right;
+                delete(root);
+                return temp;
             }
             /* 2 child case */
             if (root->left && root->right) {
