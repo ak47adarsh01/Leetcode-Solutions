@@ -12,7 +12,7 @@
 class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int val) {
-        if (!root) return root;
+        if (root == NULL) return root;
         
         if (val < root->val) {
             root->left = deleteNode(root->left, val);
