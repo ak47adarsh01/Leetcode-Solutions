@@ -1,34 +1,25 @@
 class Solution {
-  public:
-  /*
-  Return min number of rotations 
-  if one could make all elements in A or B equal to x.
-  Else return -1.
-  */
-  int check(int x, vector<int>& A, vector<int>& B, int n) {
-    // how many rotations should be done
-    // to have all elements in A equal to x
-    // and to have all elements in B equal to x
-    int rotations_a = 0, rotations_b = 0;
-    for (int i = 0; i < n; i++) {
-      // rotations coudn't be done
-      if (A[i] != x && B[i] != x) return -1;
-      // A[i] != x and B[i] == x
-      else if (A[i] != x) rotations_a++;
-      // A[i] == x and B[i] != x    
-      else if (B[i] != x) rotations_b++;
+public:
+    int minDominoRotations(vector<int> &a, vector<int> &b) {
+        // support variables
+        int len = a.size(), freq[7], freqA[7], freqB[7], mostFreq = 0;
+        for (int i = 0; i < 7; i++) freq[i] = 0, freqA[i] = 0, freqB[i] = 0;
+        // getting the frequencies
+        for (int i = 0, na, nb; i < len; i++) {
+            na = a[i], nb = b[i];
+            // increasing overall frequency
+            freq[na]++;
+            // not counting duplicated tiles (ie: [4, 4]) twice
+            if (nb != na) freq[nb]++;
+            // increasing freqs of each row
+            freqA[na]++;
+            freqB[nb]++;
+        }
+        // finding mostFreq
+        for (int i = 1; i < 7; i++) if (freq[mostFreq] < freq[i]) mostFreq = i;
+        // exiting if mostFreq is frequent enough
+        if (freq[mostFreq] != len) return -1;
+        // returning the most convenient amount of switches
+        return min(len - freqA[mostFreq], len - freqB[mostFreq]);
     }
-    // min number of rotations to have all
-    // elements equal to x in A or B
-    return min(rotations_a, rotations_b);
-  }
-
-  int minDominoRotations(vector<int>& A, vector<int>& B) {
-    int n = A.size();
-    int rotations = check(A[0], B, A, n);
-    // If one could make all elements in A or B equal to A[0]
-    if (rotations != -1 || A[0] == B[0]) return rotations;
-    // If one could make all elements in A or B equal to B[0]
-    else return check(B[0], B, A, n);
-  }
 };
