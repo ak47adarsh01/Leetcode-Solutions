@@ -1,12 +1,18 @@
 class Solution {
 public:
     string getSmallestString(int n, int k) {
-        string result(n, 0);
-        for (int position = n - 1; position >= 0; position--) {
-            int add = min(k - position, 26);
-            result[position] = (char)(add + 'a' - 1);
-            k -= add;
+        // support variables
+        string res(n, '*');
+        int i = n - 1;
+        // getting rid of the largest "load"
+        while (k - 26 > i) {
+            k -= 26;
+            res[i--] = 'z';
         }
-        return result;
+        // possible central character
+        if (i < k) res[i--] = 'a' + (k -= i + 1);
+        // 'a's to the end of the world and beyond!
+        while (i > -1) res[i--] = 'a';
+        return res;
     }
 };
